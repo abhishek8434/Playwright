@@ -1,37 +1,37 @@
 trigger:
-- main
+  branches:
+    include:
+      - main
+      - master
 
-pool:
-  vmImage: ubuntu-latest
+pr:
+  branches:
+    include:
+      - main
+      - master
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run build  # Ensure "build" exists in your package.json
-  displayName: 'npm install and build'
-
-- script: |
-    npx playwright install
-  displayName: 'Install Playwright browsers'
-
-- script: |
-    npx playwright test --reporter=junit --output=./test-results  # Configure for JUnit output
-  displayName: 'Run Playwright tests'
-  continueOnError: true
-
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/test-results/*.xml'
-    failTaskOnFailedTests: true
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifactName: 'playwright-report'
-    publishLocation: 'pipeline'
+jobs:
+- job: Test
+  timeoutInMinutes: 60
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: |
+      git checkout main
+    displayName: 'Checkout code'
+  - script: |
+      sudo apt-get install -y nodejs
+      sudo apt-get install -y npm
+    displayName: 'Install Node.js and npm'
+  - script: npm ci
+    displayName: 'Install dependencies'
+  - script: npx playwright install --with-deps
+    displayName: 'Install Playwright Browsers'
+  - script: npx playwright test
+    displayName: 'Run Playwright tests'
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'playwright-report/'
+      artifact: 'playwright-report'
+      publishLocation: 'pipeline'
+    displayName: 'Publish Playwright report'

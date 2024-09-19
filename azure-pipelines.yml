@@ -17,11 +17,8 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: |
-      git checkout main
-    displayName: 'Checkout code'
-  - script: |
-      sudo apt-get install -y nodejs
-      sudo apt-get install -y npm
+      sudo apt-get update
+      sudo apt-get install -y nodejs npm
     displayName: 'Install Node.js and npm'
   - script: npm ci
     displayName: 'Install dependencies'

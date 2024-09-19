@@ -1,8 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
 - main
 
@@ -17,22 +12,26 @@ steps:
 
 - script: |
     npm install
-    npm run build
+    npm run build  # Ensure "build" exists in your package.json
   displayName: 'npm install and build'
 
 - script: |
     npx playwright install
-    displayName: 'Install Playwright browsers'
+  displayName: 'Install Playwright browsers'
+
 - script: |
-    npx playwright test --reporter=html
-    displayName: 'Run Playwright tests'
-    continueOnError: true
+    npx playwright test --reporter=junit --output=./test-results  # Configure for JUnit output
+  displayName: 'Run Playwright tests'
+  continueOnError: true
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-results/*.xml'
+    failTaskOnFailedTests: true
 
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
+    artifactName: 'playwright-report'
     publishLocation: 'pipeline'
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'

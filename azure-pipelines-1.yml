@@ -34,7 +34,7 @@ jobs:
       else
       echo "Playwright report does not exist."
       fi
-    displayName: 'Run Tests and Generate Allure Report'
+    displayName: 'Check if Playwright report exists'
     env:
       LOGIN_URL: $(LOGIN_URL)
       LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)

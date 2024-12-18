@@ -1,8 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
   branches:
     include:
@@ -20,8 +15,9 @@ jobs:
   timeoutInMinutes: 60
   pool:
     vmImage: 'ubuntu-latest'
+
   steps:
-  # Checkout code
+  # Checkout code from repository
   - task: Checkout@1
     displayName: 'Checkout code'
 
@@ -33,21 +29,21 @@ jobs:
 
   # Install dependencies
   - script: npm install
-    displayName: 'Install dependencies'
+    displayName: 'Install Dependencies'
 
   # Install Playwright browsers
   - script: npx playwright install
     displayName: 'Install Playwright Browsers'
 
-  # Install Allure Report via npm
+  # Install Allure Report globally
   - script: npm install -g allure-commandline --save-dev
     displayName: 'Install Allure Report'
 
-  # Run tests with Allure reporting
+  # Run Playwright tests and generate Allure report
   - script: |
       npm run test
       npm run allure:generate
-    displayName: 'Run Tests'
+    displayName: 'Run Tests and Generate Allure Report'
     env:
       LOGIN_URL: $(LOGIN_URL)
       LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)
@@ -57,7 +53,7 @@ jobs:
       LOGIN_PASSWORD: $(LOGIN_PASSWORD)
       MY_APPLICATION_URL: $(MY_APPLICATION_URL)
 
-  # Generate and Upload Allure Results
+  # Publish Allure results as pipeline artifact
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: 'allure-results/'

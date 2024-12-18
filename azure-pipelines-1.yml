@@ -26,6 +26,9 @@ jobs:
     displayName: 'Install Playwright Browsers'
   - script: npm install -g allure-commandline --save-dev
     displayName: 'Install Allure Report'
+    
+  - script: npx playwright test --reporter=html --output=playwright-report/
+    displayName: 'Run Tests and Generate Allure Report'
     env:
       LOGIN_URL: $(LOGIN_URL)
       LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)
@@ -34,8 +37,6 @@ jobs:
       LOGIN_EMAIL: $(LOGIN_EMAIL)
       LOGIN_PASSWORD: $(LOGIN_PASSWORD)
       MY_APPLICATION_URL: $(MY_APPLICATION_URL)
-  - script: npx playwright test --reporter=html --output=playwright-report/
-    displayName: 'Run Tests and Generate Allure Report'
   - script: |
       if [ -d "playwright-report" ]; then
       echo "Playwright report exists."

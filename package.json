@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "allure:generate": "allure generate allure-results --clean"
-    "cleanup": "node cleanup.js",
+    "allure:generate": "allure generate allure-results --clean",
+    "cleanup": "node cleanup.js"
   },
   "keywords": [],
   "author": "",

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "cleanup": "node cleanup.js",
-    "test": "playwright test",  // or whatever command you use to run tests
+    "test": "playwright test",
     "allure:generate": "allure generate allure-results --clean"
+    "cleanup": "node cleanup.js",
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "open": "^10.1.0"
   },
   "dependencies": {
+    "playwright": "^1.47.1",
     "dotenv": "^16.4.5",
     "playwright_framework": "file:"
   }

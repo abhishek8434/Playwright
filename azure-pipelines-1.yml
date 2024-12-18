@@ -26,6 +26,14 @@ jobs:
     displayName: 'Install Playwright Browsers'
   - script: npm install -g allure-commandline --save-dev
     displayName: 'Install Allure Report'
+    env:
+      LOGIN_URL: $(LOGIN_URL)
+      LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)
+      LOGIN_EMAIL1: $(LOGIN_EMAIL1)
+      LOGIN_PASSWORD1: $(LOGIN_PASSWORD1)
+      LOGIN_EMAIL: $(LOGIN_EMAIL)
+      LOGIN_PASSWORD: $(LOGIN_PASSWORD)
+      MY_APPLICATION_URL: $(MY_APPLICATION_URL)
   - script: npx playwright test --reporter=html --output=playwright-report/
     displayName: 'Run Tests and Generate Allure Report'
   - script: |
@@ -35,14 +43,6 @@ jobs:
       echo "Playwright report does not exist."
       fi
     displayName: 'Check if Playwright report exists'
-    env:
-      LOGIN_URL: $(LOGIN_URL)
-      LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)
-      LOGIN_EMAIL1: $(LOGIN_EMAIL1)
-      LOGIN_PASSWORD1: $(LOGIN_PASSWORD1)
-      LOGIN_EMAIL: $(LOGIN_EMAIL)
-      LOGIN_PASSWORD: $(LOGIN_PASSWORD)
-      MY_APPLICATION_URL: $(MY_APPLICATION_URL)
 
   - task: PublishPipelineArtifact@1
     inputs:

@@ -139,7 +139,7 @@ test.describe('Apply For Citizenship', () => {
 
     
     //Leave all mandatory field blank
-    test.only('TC 1: Leave all mandatory field blank', async () => {
+    test('TC 1: Leave all mandatory field blank', async () => {
         //await navigateToCitizenshipForm(page);
 
         await page.getByRole('link', { name: 'Proceed' }).click();

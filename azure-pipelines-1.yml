@@ -11,35 +11,21 @@ pr:
       - master
 
 jobs:
-- job: BuildAndTest
+- job: Test
   timeoutInMinutes: 60
   pool:
     vmImage: 'ubuntu-latest'
-
   steps:
-  # Checkout code from repository
-  - task: Checkout@1
-    displayName: 'Checkout code'
-
-  # Set up Node.js environment
-  - task: UseNode@1
-    displayName: 'Set up Node.js'
-    inputs:
-      versionSpec: 'lts/*'
-
-  # Install dependencies
+  - script: |
+      sudo apt-get update
+      sudo apt-get install -y nodejs npm
+    displayName: 'Install Node.js and npm'
   - script: npm install
-    displayName: 'Install Dependencies'
-
-  # Install Playwright browsers
+    displayName: 'Install dependencies'
   - script: npx playwright install
     displayName: 'Install Playwright Browsers'
-
-  # Install Allure Report globally
   - script: npm install -g allure-commandline --save-dev
     displayName: 'Install Allure Report'
-
-  # Run Playwright tests and generate Allure report
   - script: |
       npm run test
       npm run allure:generate
@@ -53,10 +39,9 @@ jobs:
       LOGIN_PASSWORD: $(LOGIN_PASSWORD)
       MY_APPLICATION_URL: $(MY_APPLICATION_URL)
 
-  # Publish Allure results as pipeline artifact
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: 'allure-results/'
-      artifact: 'allure-results'
+      targetPath: 'playwright-report/'
+      artifact: 'playwright-report'
       publishLocation: 'pipeline'
-    displayName: 'Publish Allure Results'
+    displayName: 'Publish Playwright report'

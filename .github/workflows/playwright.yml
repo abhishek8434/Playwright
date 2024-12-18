@@ -24,13 +24,10 @@ jobs:
       # Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install
-        
-      # Install Allure CLI
-      - name: Install Allure CLI
-        run: |
-          wget -q https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-commandline-2.21.0.zip -O allure-commandline.zip
-          unzip -o allure-commandline.zip -d /opt/allure
-          export PATH="/opt/allure/bin:$PATH"
+
+      # Install Allure Report via npm
+      - name: Install Allure Report
+        run: npm install -g allure-commandline --save-dev
 
       # Run tests with Allure reporting
       - name: Run Tests

@@ -11,8 +11,7 @@ const { defineConfig, devices } = require('@playwright/test');
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
-  timeout: 50000,
+testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -20,17 +19,32 @@ module.exports = defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['list'],['allure-playwright']],
+  globalTeardown: require.resolve('./global-teardown'), // Add global teardown script
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+  use: {
+    headless: true, // Run in headless mode
+    viewport: { width: 1280, height: 720 }, // Set browser viewport size
+    screenshot: 'on', // Take screenshot on failure
+    video: 'on', // Always record videos, even if the test passes
+
+    baseURL: process.env.LOGIN_URL,
+
+    // Configure video recording
+    contextOptions: {
+      recordVideo: {
+        dir: path.join(__dirname, 'videos'), // Directory where videos will be saved
+        size: { width: 1280, height: 720 }, // Video resolution (same as viewport)
+      }
+    }
   },
+
+   timeout: 60000, // Timeout for each test
+
 
   /* Configure projects for major browsers */
   projects: [

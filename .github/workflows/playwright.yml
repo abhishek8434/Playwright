@@ -41,8 +41,8 @@ jobs:
           name: allure-results
           path: allure-results/
 
-      # Set Environment Variables
-      - name: Set Environment Variables
+      # Run tests with environment variables
+      - name: Run Tests with Env Vars
         env:
           LOGIN_URL: ${{ secrets.LOGIN_URL }}
           LOGIN_PASSWORD_SECONDARY: ${{ secrets.LOGIN_PASSWORD_SECONDARY }}
@@ -51,3 +51,5 @@ jobs:
           LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
           LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
           MY_APPLICATION_URL: ${{ secrets.MY_APPLICATION_URL }}
+        run: |
+          echo "Environment variables set"

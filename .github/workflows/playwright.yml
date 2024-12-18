@@ -25,6 +25,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install
         
+      # Install Allure CLI
+      - name: Install Allure CLI
+        run: |
+          curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.zip
+          unzip -o allure-commandline.zip -d /opt/allure
+          export PATH="/opt/allure/bin:$PATH"
+
       # Run tests with Allure reporting
       - name: Run Tests
         env:
@@ -38,13 +45,6 @@ jobs:
         run: |
           npm run test
           npm run allure:generate
-
-      # Install Allure CLI
-      - name: Install Allure CLI
-        run: |
-          curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.zip
-          unzip -o allure-commandline.zip -d /opt/allure
-          export PATH="/opt/allure/bin:$PATH"
 
       # Generate and Upload Allure Results
       - name: Upload Allure Results

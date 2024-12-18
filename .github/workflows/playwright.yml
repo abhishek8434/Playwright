@@ -21,8 +21,20 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      # Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install
+        
       # Run tests with Allure reporting
       - name: Run Tests
+        env:
+          LOGIN_URL: ${{ secrets.LOGIN_URL }}
+          LOGIN_PASSWORD_SECONDARY: ${{ secrets.LOGIN_PASSWORD_SECONDARY }}
+          LOGIN_EMAIL1: ${{ secrets.LOGIN_EMAIL1 }}
+          LOGIN_PASSWORD1: ${{ secrets.LOGIN_PASSWORD1 }}
+          LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+          MY_APPLICATION_URL: ${{ secrets.MY_APPLICATION_URL }}
         run: |
           npm run test
           npm run allure:generate
@@ -40,16 +52,3 @@ jobs:
         with:
           name: allure-results
           path: allure-results/
-
-      # Run tests with environment variables
-      - name: Run Tests with Env Vars
-        env:
-          LOGIN_URL: ${{ secrets.LOGIN_URL }}
-          LOGIN_PASSWORD_SECONDARY: ${{ secrets.LOGIN_PASSWORD_SECONDARY }}
-          LOGIN_EMAIL1: ${{ secrets.LOGIN_EMAIL1 }}
-          LOGIN_PASSWORD1: ${{ secrets.LOGIN_PASSWORD1 }}
-          LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
-          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
-          MY_APPLICATION_URL: ${{ secrets.MY_APPLICATION_URL }}
-        run: |
-          echo "Environment variables set"

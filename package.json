@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "cleanup": "node cleanup.js",
-    "test:allure": "npx playwright test && npx allure generate allure-results --clean && npx allure open"
+    "test": "playwright test",  // or whatever command you use to run tests
+    "allure:generate": "allure generate allure-results --clean"
   },
   "keywords": [],
   "author": "",

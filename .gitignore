@@ -3,3 +3,11 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+.env
+/Screenshots/
+/tests/videos/
+/videos/
+/allure-report/
+/allure-results/
+/screenshot-register.png
+/screenshot-success-message.png

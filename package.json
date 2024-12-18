@@ -1,21 +1,24 @@
 {
-  "name": "playwrightlearning",
+  "name": "playwright_framework",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cleanup": "node cleanup.js",
+    "test:allure": "npx playwright test && npx allure generate allure-results --clean && npx allure open"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.47.1",
-    "@types/node": "^20.14.12",
-    "allure-commandline": "^2.30.0",
-    "allure-playwright": "^3.0.0-beta.12",
-    "playwright": "^1.47.1"
+    "@faker-js/faker": "^9.0.3",
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.5.5",
+    "allure-playwright": "^3.0.5",
+    "open": "^10.1.0"
   },
   "dependencies": {
-    "@estruyf/github-actions-reporter": "^1.9.2",
-    "xlsx": "^0.18.5"
+    "dotenv": "^16.4.5",
+    "playwright_framework": "file:"
   }
 }

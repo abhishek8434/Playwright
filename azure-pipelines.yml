@@ -11,24 +11,52 @@ pr:
       - master
 
 jobs:
-- job: Test
+- job: BuildAndTest
   timeoutInMinutes: 60
   pool:
     vmImage: 'ubuntu-latest'
   steps:
-  - script: |
-      sudo apt-get update
-      sudo apt-get install -y nodejs npm
-    displayName: 'Install Node.js and npm'
-  - script: npm ci
+  # Checkout code
+  - task: Checkout@1
+    displayName: 'Checkout code'
+
+  # Set up Node.js environment
+  - task: UseNode@1
+    displayName: 'Set up Node.js'
+    inputs:
+      versionSpec: 'lts/*'
+
+  # Install dependencies
+  - script: npm install
     displayName: 'Install dependencies'
-  - script: npx playwright install --with-deps
+
+  # Install Playwright browsers
+  - script: npx playwright install
     displayName: 'Install Playwright Browsers'
-  - script: npx playwright test
-    displayName: 'Run Playwright tests'
+
+  # Install Allure Report via npm
+  - script: npm install -g allure-commandline --save-dev
+    displayName: 'Install Allure Report'
+
+  # Run tests with Allure reporting
+  - script: |
+      npm run test
+      npm run allure:generate
+    displayName: 'Run Tests'
+    env:
+      LOGIN_URL: $(LOGIN_URL)
+      LOGIN_PASSWORD_SECONDARY: $(LOGIN_PASSWORD_SECONDARY)
+      LOGIN_EMAIL1: $(LOGIN_EMAIL1)
+      LOGIN_PASSWORD1: $(LOGIN_PASSWORD1)
+      LOGIN_EMAIL: $(LOGIN_EMAIL)
+      LOGIN_PASSWORD: $(LOGIN_PASSWORD)
+      MY_APPLICATION_URL: $(MY_APPLICATION_URL)
+
+  # Generate and Upload Allure Results
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: 'playwright-report/'
-      artifact: 'playwright-report'
+      targetPath: 'allure-results/'
+      artifact: 'allure-results'
       publishLocation: 'pipeline'
-    displayName: 'Publish Playwright report'
+    displayName: 'Publish Allure Results'
+

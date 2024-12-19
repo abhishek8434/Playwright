@@ -170,7 +170,7 @@ Reports: Test results and reports are saved in the playwright-report/ folder.
 Here is an example of how the tests in this framework are structured. This script tests the citizenship application process:  
 
 
-``const { test, expect } = require('@playwright/test');  
+```const { test, expect } = require('@playwright/test');  
 require('dotenv').config();  
 
 test('First Test Case', async ({ page }) => {  
@@ -187,7 +187,7 @@ test('First Test Case', async ({ page }) => {
 
   // Verify success message  
   await expect(page).toHaveText('Thank you for your application!');  
-});``  
+});```
 
 
 ## 10. Utilities

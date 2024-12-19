@@ -101,7 +101,7 @@ This makes it clear that if the packages aren’t installed automatically, they 
 ## 3: Install Playwright
 Initialize Playwright by running:
 
-npm init playwright@latest
+``npm init playwright@latest``
 
 
 ## 4. Set Up Environment Variables
@@ -109,9 +109,9 @@ Create a .env file in the root directory of your project. This file will store s
 
 Example .env file:  
 
-BASE_URL=https://example.com  
-USERNAME=testuser  
-PASSWORD=testpassword  
+``BASE_URL=https://example.com``  
+``USERNAME=testuser``  
+``PASSWORD=testpassword``  
 
 How to use environment variables in tests:
 

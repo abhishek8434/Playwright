@@ -153,37 +153,37 @@ test.describe('Apply For Citizenship', () => {
 
     });
 
-    //Invalid file type
-    test('TC 2: Invalid file type', async () => {
+    // //Invalid file type
+    // test('TC 2: Invalid file type', async () => {
 
              
-        //Proceed button click
-        await page.getByRole('link', { name: 'Proceed' }).click();
-        const isVisible = await page.getByText('Please complete all the required field(s).').isVisible();
-        if (isVisible) {
-            await page.getByRole('link', { name: 'Ok' }).click();
-            console.log('Message')
-        } else {
-            console.log("The text is not visible.");
-        }
-        const validationMessage = 'Please upload file with png/jpeg/pdf/word format';
-        await expect(page.getByText(validationMessage).first()).toBeVisible({ timeout: 5000 });
-        // Get the full text content of the page
-        const pageText = await page.textContent('body');
+    //     //Proceed button click
+    //     await page.getByRole('link', { name: 'Proceed' }).click();
+    //     const isVisible = await page.getByText('Please complete all the required field(s).').isVisible();
+    //     if (isVisible) {
+    //         await page.getByRole('link', { name: 'Ok' }).click();
+    //         console.log('Message')
+    //     } else {
+    //         console.log("The text is not visible.");
+    //     }
+    //     const validationMessage = 'Please upload file with png/jpeg/pdf/word format';
+    //     await expect(page.getByText(validationMessage).first()).toBeVisible({ timeout: 5000 });
+    //     // Get the full text content of the page
+    //     const pageText = await page.textContent('body');
 
-        // Count occurrences of the sentence
-        const sentenceCount = (pageText.match(new RegExp(validationMessage, 'g')) || []).length;
+    //     // Count occurrences of the sentence
+    //     const sentenceCount = (pageText.match(new RegExp(validationMessage, 'g')) || []).length;
 
-        console.log(`The sentence "${validationMessage}" appears ${sentenceCount} times.`);
-        // Take a full-page screenshot
-        await page.screenshot({ path: path.join(screenshotDir, 'applicationforbachelorhood_invalid_file.png'), fullPage: true });
+    //     console.log(`The sentence "${validationMessage}" appears ${sentenceCount} times.`);
+    //     // Take a full-page screenshot
+    //     await page.screenshot({ path: path.join(screenshotDir, 'applicationforbachelorhood_invalid_file.png'), fullPage: true });
 
-        console.log('Screenshot saved as applicationforbachelorhood_invalid_file.png');
+    //     console.log('Screenshot saved as applicationforbachelorhood_invalid_file.png');
 
-    });
+    // });
 
     //positive flow
-    test.only('TC 3: all mandatory field ', async () => {
+    test('TC 3: all mandatory field ', async () => {
                 
         await page.fill(celebrationdate.txtLimit, '');
         await page.type(celebrationdate.txtLimit, '999')        

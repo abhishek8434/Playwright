@@ -81,18 +81,18 @@ Run the following command to install the required dependencies:
 npm install or npm i
 This will install:
 
-Playwright  
-dotenv  
-faker.js  
+``Playwright``  
+``dotenv``  
+``faker.js``  
 
 Playwright: If not installed automatically, run:  
-npm init playwright@latest   
+``npm init playwright@latest``    
 
 dotenv: If not installed automatically, run:  
-npm install dotenv    
+``npm install dotenv``    
 
 faker.js: If not installed automatically, run:  
-npm install @faker-js/faker  
+``npm install @faker-js/faker``  
 
 Once the installation is complete, you're ready to move on to the next step.
 

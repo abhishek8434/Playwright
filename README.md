@@ -187,7 +187,8 @@ test('First Test Case', async ({ page }) => {
 
   // Verify success message  
   await expect(page).toHaveText('Thank you for your application!');  
-});```
+});
+```
 
 
 ## 10. Utilities
@@ -195,24 +196,25 @@ This project includes a utils/ directory containing helper functions to simplify
 
 Example helper function:  
 
-``module.exports = {  
-  login: async function (page, username, password) {  
-    await page.fill('#username', username);  
-    await page.fill('#password', password);  
-    await page.click('#login');  
+```module.exports = {
+  login: async function (page, username, password) {
+    await page.fill('#username', username);
+    await page.fill('#password', password);
+    await page.click('#login');
   },  
-};``  
-
+};
+```
 
 You can use this helper function in your tests like so:  
 
-``const { login } = require('../utils/helper');  
+```const { login } = require('../utils/helper');  
 
 test('Login Test', async ({ page }) => {  
   await page.goto(process.env.BASE_URL);  
   await login(page, process.env.USERNAME, process.env.PASSWORD);  
   // Test login functionality here  
-});``  
+});
+```
 
 
 ## 11. Troubleshooting

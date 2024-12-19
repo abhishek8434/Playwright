@@ -448,7 +448,7 @@ test.describe('Marriage Form Submission Tests', () => {
   });
   
   // Positive Scenario: Successful marriage application submission with valid data
-  test.only('TC 5: Successful marriage application submission with valid data', async () => {
+  test('TC 5: Successful marriage application submission with valid data', async () => {
     // Fill in marriage ceremony details
     await page.locator('#PlaceOfOathID').selectOption('1025');
     await page.locator('#DateOfOath').click();

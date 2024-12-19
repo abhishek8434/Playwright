@@ -45,7 +45,7 @@ testDir: './tests',
     }
   },
 
-   timeout: 600000, // Timeout for each test
+   timeout: 60000, // Timeout for each test
 
 
   /* Configure projects for major browsers */

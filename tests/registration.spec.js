@@ -147,7 +147,7 @@ test.describe('Form Submission Tests', () => {
    * Positive Test Case
    */
 
-  test.only('Positive Test: Successful registration', async ({ page }) => {
+  test('Positive Test: Successful registration', async ({ page }) => {
     // Fill the form with valid data
     await page.getByLabel('* First Name').fill(formData.firstName);
     await page.getByLabel('* Last Name').fill(formData.lastName);

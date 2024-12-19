@@ -169,7 +169,7 @@ test.describe('Apply For Citizenship', () => {
     });
 
     //positive flow
-    test.only('TC 3: all mandatory field ', async () => {
+    test('TC 3: all mandatory field ', async () => {
            
         await page.type(certificaterequest.MinisterName, 'Namoie')
       

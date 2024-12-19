@@ -14,49 +14,49 @@ The framework is designed to test various workflows like citizenship application
 
 ## Project Structure
 
-├── .github/               # GitHub configuration files (for CI/CD workflows)  
-├── allure-report/         # Allure-generated test reports  
-├── allure-results/        # Allure test results (input for reports)  
-├── constants/             # Stores reusable locators  
-│   └── locators.js        # Element selectors for the tests  
-├── node_modules/          # Installed dependencies  
-├── playwright-report/     # Automatically generated test reports  
-├── Screenshots/           # Test failure screenshots (auto-generated)  
-├── test-results/          # Stores test run results  
-├── tests/                 # Test scripts directory  
-│   ├── applicationforbachelorhood.spec.js  
-│   ├── applyplaceofworship.spec.js  
-│   ├── attestationofmaritalstatus.spec.js  
-│   ├── certifiedtrucopy.spec.js            
-│   ├── citizenship.spec.js                 
-│   ├── citizenshipbypresent.spec.js  
-│   ├── citizenshipbyregistration.spec.js  
-│   ├── citizenshipbyroc.spec.js  
-│   ├── citizenshipbysis.spec.js  
-│   ├── citizenshipbytrp.spec.js  
-│   ├── finalmarriageform.spec.js           
-│   ├── marriagecelebrationdate.spec.js  
-│   ├── marriagecertification.spec.js  
-│   ├── registration.spec.js                
-│   ├── renewalcitizenship.spec.js  
-│   ├── requestmarriagecertificates.spec.js  
-│   └── verificationdocument.spec.js        
-├── tests-examples/        # Example test scripts  
-├── utils/                 # Utility scripts  
-│   └── helper.js          # Helper functions used across tests  
-├── videos/                # Video recordings of test executions  
-├── .env                   # Environment variables (you need to create this)  
-├── .gitignore             # Git ignore file  
-├── azure-pipelines.yml    # Azure DevOps pipeline configuration  
-├── cleanup.js             # Cleanup scripts for test data  
-├── download.png           # Sample image for testing downloads  
-├── Dummy_PDF.pdf          # Dummy PDF file for testing  
-├── global-teardown.js     # Global teardown logic  
-├── invalid-file.txt       # Example of invalid file testing  
-├── playwright.config.js   # Playwright configuration file  
-├── package.json           # Project dependencies and npm scripts  
-├── package-lock.json      # Lockfile for dependencies  
-└── README.md              # This documentation  
+├── .github/                                            #GitHub configuration files (for CI/CD workflows)  
+├── allure-report/                                      #Allure-generated test reports  
+├── allure-results/                                     #Allure test results (input for reports)  
+├── constants/                                          #Stores reusable locators  
+│   └── locators.js                                     #Element selectors for the tests  
+├── node_modules/                                       #Installed dependencies  
+├── playwright-report/                                  #Automatically generated test reports  
+├── Screenshots/                                        #Test failure screenshots (auto-generated)  
+├── test-results/                                       #Stores test run results  
+├── tests/                                              #Test scripts directory  
+│   ├── applicationforbachelorhood.spec.js              #Test scripts  
+│   ├── applyplaceofworship.spec.js                     #Test scripts   
+│   ├── attestationofmaritalstatus.spec.js              #Test scripts  
+│   ├── certifiedtrucopy.spec.js                        #Test scripts   
+│   ├── citizenship.spec.js                             #Test scripts  
+│   ├── citizenshipbypresent.spec.js                    #Test scripts  
+│   ├── citizenshipbyregistration.spec.js               #Test scripts  
+│   ├── citizenshipbyroc.spec.js                        #Test scripts  
+│   ├── citizenshipbysis.spec.js                        #Test scripts  
+│   ├── citizenshipbytrp.spec.js                        #Test scripts   
+│   ├── finalmarriageform.spec.js                       #Test scripts      
+│   ├── marriagecelebrationdate.spec.js                 #Test scripts    
+│   ├── marriagecertification.spec.js                   #Test scripts    
+│   ├── registration.spec.js                            #Test scripts   
+│   ├── renewalcitizenship.spec.js                      #Test scripts   
+│   ├── requestmarriagecertificates.spec.js             #Test scripts  
+│   └── verificationdocument.spec.js                    #Test scripts    
+├── tests-examples/                                     #Example test scripts  
+├── utils/                                              #Utility scripts  
+│   └── helper.js                                       #Helper functions used across tests  
+├── videos/                                             #Video recordings of test executions  
+├── .env                                                #Environment variables (you need to create this)  
+├── .gitignore                                          #Git ignore file  
+├── azure-pipelines.yml                                 #Azure DevOps pipeline configuration  
+├── cleanup.js                                          #Cleanup scripts for test data  
+├── download.png                                        #Sample image for testing downloads  
+├── Dummy_PDF.pdf                                       #Dummy PDF file for testing  
+├── global-teardown.js                                  #Global teardown logic  
+├── invalid-file.txt                                    #Example of invalid file testing  
+├── playwright.config.js                                #Playwright configuration file  
+├── package.json                                        #Project dependencies and npm scripts  
+├── package-lock.json                                   #Lockfile for dependencies  
+└── README.md                                           #This documentation  
 
 
 ## 1. Prerequisites

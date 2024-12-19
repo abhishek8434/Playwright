@@ -142,7 +142,7 @@ test.describe('Apply For Citizenship', () => {
     });
 
     //Invalid file type
-    test.only('TC 2: Invalid file type', async () => {
+    test('TC 2: Invalid file type', async () => {
         
         //Personal Information
         await page.getByRole('heading', { name: 'Personal Information' }).click();

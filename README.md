@@ -36,7 +36,8 @@ The framework is designed to test various workflows like citizenship application
 │   ├── citizenshipbytrp.spec.js                        #Test scripts   
 │   ├── finalmarriageform.spec.js                       #Test scripts      
 │   ├── marriagecelebrationdate.spec.js                 #Test scripts    
-│   ├── marriagecertification.spec.js                   #Test scripts    
+│   ├── marriagecertification.spec.js                   #Test scripts   
+│   ├── optimizedcitizenshipform.spec.js                #Test scripts  
 │   ├── registration.spec.js                            #Test scripts   
 │   ├── renewalcitizenship.spec.js                      #Test scripts   
 │   ├── requestmarriagecertificates.spec.js             #Test scripts  

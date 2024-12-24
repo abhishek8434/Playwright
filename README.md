@@ -38,13 +38,17 @@ The framework is designed to test various workflows like citizenship application
 │   ├── marriagecelebrationdate.spec.js                 #Test scripts    
 │   ├── marriagecertification.spec.js                   #Test scripts   
 │   ├── optimizedcitizenshipform.spec.js                #Test scripts  
+│   ├── optimizedapplicationforbachelorhood.spec.js     #Test scripts  
+│   ├── optimizedplaceofworship.spec.js                 #Test scripts  
 │   ├── registration.spec.js                            #Test scripts   
 │   ├── renewalcitizenship.spec.js                      #Test scripts   
 │   ├── requestmarriagecertificates.spec.js             #Test scripts  
 │   └── verificationdocument.spec.js                    #Test scripts    
 ├── tests-examples/                                     #Example test scripts  
 ├── utils/                                              #Utility scripts  
-│   ├── citizenshipform.js                              #Helper functions for optimizedcitizenshipform  
+│   ├── bachleorhood.js                                 #Helper functions for optimizedapplicationforbachelorhoodform  
+│   ├── citizenshipform.js                              #Helper functions for optimizedcitizenshipform 
+│   ├── placeofworship.js                               #Helper functions for optimizedplaceofworship 
 │   └── helper.js                                       #Helper functions used across tests  
 ├── videos/                                             #Video recordings of test executions  
 ├── .env                                                #Environment variables (you need to create this)  

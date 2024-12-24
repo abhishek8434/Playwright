@@ -44,6 +44,7 @@ The framework is designed to test various workflows like citizenship application
 │   └── verificationdocument.spec.js                    #Test scripts    
 ├── tests-examples/                                     #Example test scripts  
 ├── utils/                                              #Utility scripts  
+│   ├── citizenshipform.js                              #Helper functions for optimizedcitizenshipform  
 │   └── helper.js                                       #Helper functions used across tests  
 ├── videos/                                             #Video recordings of test executions  
 ├── .env                                                #Environment variables (you need to create this)  

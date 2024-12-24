@@ -25,7 +25,7 @@ const phone = generateNigerianPhoneNumber()
 
 export async function uploadDocumentWithNameAndType(page, documentName, fileType) {
     // Type the document name into the necessary field
-    await page.type(citizinshipform.duNecessaryDocumentName, documentName);
+    await page.type(citizenshipbachelorhood.necessaryDocumentName, documentName);
     // Define file path based on fileType
     let filePath;
     if (fileType === 'pdf') {
@@ -36,7 +36,7 @@ export async function uploadDocumentWithNameAndType(page, documentName, fileType
         throw new Error('Invalid file type');
     }
     // Upload the file
-    await page.locator(citizinshipform.duNecessaryDocument).setInputFiles(filePath);
+    await page.locator(citizenshipbachelorhood.necessaryDocument).setInputFiles(filePath);
 }
 async function uploadFile(page, selector, filePath) {
     await page.locator(selector).setInputFiles(filePath);
@@ -70,7 +70,7 @@ export async function uploadDocumentsWithName(page, documentName, fileType) {
     ];
 
     for (const documentText of documentsToUpload) {
-        await page.locator('li').filter({ hasText: documentText }).getByRole('textbox').setInputFiles('Dummy_PDF.pdf');
+        await page.locator('li').filter({ hasText: documentText }).getByRole('textbox').setInputFiles(filePath);
     }
 
 }

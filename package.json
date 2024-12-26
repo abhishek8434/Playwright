@@ -19,8 +19,9 @@
     "open": "^10.1.0"
   },
   "dependencies": {
-    "playwright": "^1.47.1",
     "dotenv": "^16.4.5",
+    "playwright": "^1.47.1",
+    "Playwright": "file:",
     "playwright_framework": "file:"
   }
 }
